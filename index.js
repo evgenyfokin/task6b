@@ -28,7 +28,6 @@ app.use(express.json())
 app.use(messagesRoutes)
 app.use(usersRoutes)
 
-
 io.on('connection', socket => {
     console.log('User connected')
 
