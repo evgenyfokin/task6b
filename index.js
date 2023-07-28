@@ -16,7 +16,7 @@ const {User} = require('./models')
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
 app.use(cors({
-    origin: 'https://task6f.vercel.app/',
+    origin: 'https://task6f.vercel.app',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
     preflightContinue: false,
@@ -77,5 +77,5 @@ app.use('/api', createProxyMiddleware({
 }));
 
 http.listen(PORT, () => {
-    console.log('Server running on port 3000')
+    console.log(`Server running on port ${PORT}`)
 })
