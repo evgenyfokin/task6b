@@ -17,7 +17,7 @@ let sequelize;
 //   sequelize = new Sequelize(config.database, config.username, config.password, config);
 // }
 
-const dataBaseUrl = process.env.CLEARDB_DATABASE_URL
+const databaseUrl = process.env.CLEARDB_DATABASE_URL
 
 if (databaseUrl) {
     const connectionParams = new URL(databaseUrl); // Разбиваем URL на компоненты
