@@ -1,0 +1,13 @@
+node_modules/
+package-lock.json
+yarn.lock
+.env
+*.log
+coverage/
+dist/
+*.tsbuildinfo
+lib/
+.cache/
+.tmp/
+node_modules/*
+!node_modules/**/
