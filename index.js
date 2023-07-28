@@ -76,7 +76,6 @@ app.use('/api', createProxyMiddleware({
         '^/api': '',
     },
 }));
-
 http.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`)
 })
