@@ -13,8 +13,17 @@ const usersRoutes = require('./routes/users')
 const cors = require('cors')
 const {Message} = require('./models')
 const {User} = require('./models')
+const { createProxyMiddleware } = require('http-proxy-middleware');
 
-app.use(cors())
+app.use(cors({
+    origin: 'https://task6f.vercel.app/',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+    preflightContinue: false,
+    optionsSuccessStatus: 204,
+}));
+
+
 app.use(express.json())
 app.use(messagesRoutes)
 app.use(usersRoutes)
@@ -49,7 +58,6 @@ io.on('connection', socket => {
             }
             const newMessage = await Message.create({sender, receiver, subject, message, timestamp})
 
-            // socket.to(receiver).emit('new_message', newMessage)
             io.emit('new_message', newMessage)
         } catch (err) {
             console.error(err)
@@ -60,6 +68,14 @@ io.on('connection', socket => {
         console.log('user disconnected')
     })
 })
+
+app.use('/api', createProxyMiddleware({
+    target: 'https://nameless-wildwood-04003-8f80ca6edf3a.herokuapp.com',
+    changeOrigin: true,
+    pathRewrite: {
+        '^/api': '',
+    },
+}));
 
 http.listen(PORT, () => {
     console.log('Server running on port 3000')
