@@ -14,7 +14,6 @@ const cors = require('cors')
 const {Message} = require('./models')
 const {User} = require('./models')
 
-
 app.use(cors())
 app.use(express.json())
 app.use(messagesRoutes)
