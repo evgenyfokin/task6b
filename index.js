@@ -15,6 +15,7 @@ const {Message} = require('./models')
 const {User} = require('./models')
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
+
 app.use(cors({
     origin: 'https://task6f.vercel.app',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',

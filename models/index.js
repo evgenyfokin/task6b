@@ -9,6 +9,7 @@ const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.json')[env];
 const db = {};
 
+
 let sequelize;
 
 const databaseUrl = process.env.CLEARDB_DATABASE_URL
